@@ -2,11 +2,27 @@
     color: red;
 }
 
-table {
+.tab1 {
     border-style: double;
     text-align: center;
 }
 
-tr {
+.tab2 {
+    border-style: solid;
+}
+
+.tab3 {
+    border-style: groove;
+}
+
+.ab1 {
     background-color: cadetblue;
+}
+
+.ab2 {
+    background-color: crimson;
+}
+
+.ab3 {
+    background-color: darkgreen;
 }
