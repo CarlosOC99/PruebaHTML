@@ -11,11 +11,15 @@
 
 	<header class="main-head">
 		<nav class="main">
-			<h1 id="logo">Hola</h1>
+			<h1 id="logo">Buen dia</h1>
 			<ul>
-				<li><a href="#">Logout</a></li>
-				<li><a href="#">Register</a></li>
-				<li><a href="#">Login</a></li>
+				{% if request.user.is_authenticated %}
+				<li><a href="{% url 'logout' %}">Logout</a></li>
+				{% else %}
+				<li><a href="{% url 'register' %}">Register</a></li>
+				<li><a href="{% url 'login' %}">Login</a></li>
+				{% endif %}
+
 			</ul>
 		</nav>
 	</header>
@@ -24,15 +28,25 @@
 					Messages 
 	-------------------------------------->
 
+	{% if messages %}
+		{% for message in messages %}
+		<div class="notification {{ message.tags }}"> 
+			{{message}}
+		</div>
+		{% endfor %}
+	{% endif %}
+
 	<!-------------------------------------
 					Navigation Bar 
 	-------------------------------------->
 	<div class="main">
 		
 		<nav class="second-nav">
-			<a class="feed" href="#">Inicio</a>
+			<a class="feed" href="{% url 'feed' %}">Inicio</a>
+			{% if request.user.is_authenticated %}
 			<a class="profile" href="#">Mi Perfil</a>
 			<a class="new" href="#">Crear nuevo post</a>
+			{% endif %}
 		</nav>
 
 
@@ -46,7 +60,7 @@
 
 	<footer>
 		<div class="row">
-			<p>Red Social con Django<br>hecha por: <a href="http://www.youtube.com/mundopython">Mundo Python</a></p>
+			<p>DIGIMUNDO TECHNOLOGIES <br>TESCA</p>
 		</div>
 	</footer>
 
